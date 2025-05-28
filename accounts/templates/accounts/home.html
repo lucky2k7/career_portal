@@ -1,0 +1,24 @@
+{% extends 'accounts/base.html' %}
+
+
+
+{% block title %}Home | Career Portal{% endblock %}
+
+{% block content %}
+<div class="text-center mt-5">
+    <h1>Welcome to the Student Career Portal</h1>
+    <p class="lead mt-3">Manage tests, students, and track progress with ease.</p>
+
+    {% if user.is_authenticated %}
+        <p class="mt-4">You are logged in as <strong>{{ user.username }}</strong> ({{ user.profile.role|title }})</p>
+        {% if user.profile.role == 'teacher' %}
+            <a href="{% url 'teacher_dashboard' %}" class="btn btn-primary mt-3">Go to Teacher Dashboard</a>
+        {% elif user.profile.role == 'student' %}
+            <a href="{% url 'student_dashboard' %}" class="btn btn-success mt-3">Go to Student Dashboard</a>
+        {% endif %}
+    {% else %}
+        <a href="{% url 'login' %}" class="btn btn-outline-primary mt-3">Login</a>
+        <a href="{% url 'register' %}" class="btn btn-outline-secondary mt-3">Register</a>
+    {% endif %}
+</div>
+{% endblock %}

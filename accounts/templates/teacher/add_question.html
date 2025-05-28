@@ -1,0 +1,56 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <h2 class="mb-4 text-center">Add a New Question</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <!-- Question -->
+            <div class="mb-3">
+                <label for="id_question_text" class="form-label">Question</label>
+                <textarea class="form-control" name="question_text" id="id_question_text" rows="3">{{ form.question_text.value }}</textarea>
+            </div>
+
+            <!-- Options -->
+            <div class="mb-3">
+                <label class="form-label">Options</label>
+
+                <div class="form-check mb-2">
+                    <input class="form-control mb-1" type="text" name="option1" id="id_option1" value="{{ form.option1.value }}" placeholder="Option 1">
+                </div>
+
+                <div class="form-check mb-2">
+                    <input class="form-control mb-1" type="text" name="option2" id="id_option2" value="{{ form.option2.value }}" placeholder="Option 2">
+                </div>
+
+                <div class="form-check mb-2">
+                    <input class="form-control mb-1" type="text" name="option3" id="id_option3" value="{{ form.option3.value }}" placeholder="Option 3">
+                </div>
+
+                <div class="form-check mb-2">
+                    <input class="form-control mb-1" type="text" name="option4" id="id_option4" value="{{ form.option4.value }}" placeholder="Option 4">
+                </div>
+            </div>
+
+            <!-- Correct Option -->
+            <div class="mb-4">
+                <label class="form-label">Select Correct Option</label><br>
+                {% for value, label in form.fields.correct_option.choices %}
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="correct_option" id="correct_option_{{ value }}" value="{{ value }}"
+                        {% if form.correct_option.value == value %}checked{% endif %}>
+                        <label class="form-check-label" for="correct_option_{{ value }}">{{ label }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-primary w-100">Add Question</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+<h2>Student Dashboard</h2>
+<p>Welcome, {{ user.username }}!</p>
+<p>Your role: {{ user.profile.role|title }}</p>
+<a href="{% url 'test_page' %}">Test</a>
+{% endblock %}

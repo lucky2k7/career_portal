@@ -1,0 +1,8 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+<h2>Teacher Dashboard</h2>
+<p>Welcome, {{ user.username }}!</p>
+<p>Your role: {{ user.profile.role|title }}</p>
+<a href="{% url 'add_question' %}">Add Question</a>
+{% endblock %}
