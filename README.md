@@ -1,5 +1,6 @@
-# 🎓 Student Career Portal
 
+# 🎓 Student Career Portal
+![Screenshot](student-career-portal.png)
 A web-based application built with Django that allows students to take career-oriented tests and teachers/admins to manage test questions and evaluate student performance.
 
 ## 🚀 Features
